@@ -1,15 +1,21 @@
 package com.example.AlmightyBook.order.domain;
 
-import lombok.Builder;
-import lombok.Value;
+import com.example.AlmightyBook.jpa.BaseEntity;
+import lombok.*;
 
-@Value
+import javax.persistence.Entity;
+
+@Getter
+@Setter
 @Builder
-public class Recipient {
-    String name;
-    String phone;
-    String street;
-    String city;
-    String zipCode;
-    String email;
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+public class Recipient extends BaseEntity {
+    private String name;
+    private String phone;
+    private String street;
+    private String city;
+    private String zipCode;
+    private String email;
 }

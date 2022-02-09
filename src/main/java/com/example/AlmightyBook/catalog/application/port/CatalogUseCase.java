@@ -1,68 +1,65 @@
 package com.example.AlmightyBook.catalog.application.port;
 
 import com.example.AlmightyBook.catalog.domain.Book;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static java.util.Collections.*;
 
 public interface CatalogUseCase {
     List<Book> findByTitle(String title);
 
-    Optional<Book> findOneByTitle(String title);
+    Optional<Book> findById(Long id);
+
+    public Optional<Book> findOneByTitle(String title);
 
     List<Book> findByAuthor(String author);
 
     List<Book> findAll();
 
-    Optional<Book> findOneByTitleAndAuthor(String title, String author);
+    List<Book> findByTitleAndAuthor(String title, String author);
 
-    void addBook(CreateBookCommand command);
+    Book addBook(CreateBookCommand command);
 
     void removeById(Long id);
 
     UpdateBookResponse updateBook(UpdateBookCommand command);
 
+    void updateBookCover(UpdateBookCoverCommand command);
+
+    void removeBookCover(Long id);
+
+    @Value
+    class UpdateBookCoverCommand{
+        Long id;
+        byte[] file;
+        String contentType;
+        String filename;
+    }
+
     @Value
     class CreateBookCommand{
         String title;
-        String author;
+        Set<Long> authors;
         Integer year;
         BigDecimal price;
-
-        public Book toBook() {
-            return new Book(title, author, year, price);
-        }
     }
 
     @Value
     @Builder
+    @AllArgsConstructor
     class UpdateBookCommand{
         Long id;
         String title;
-        String author;
+        Set<Long>  authors;
         Integer year;
         BigDecimal price;
-
-        public Book updateFields(Book book) {
-            if(title != null){
-                book.setTitle(title);
-            }
-            if(author != null){
-                book.setAuthor(author);
-            }
-            if(year != null){
-                book.setYear(year);
-            }
-            if(price != null){
-                book.setPrice(price);
-            }
-            return book;
-        }
     }
 
     @Value
