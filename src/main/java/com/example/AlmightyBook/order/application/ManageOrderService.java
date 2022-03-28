@@ -5,11 +5,16 @@ import com.example.AlmightyBook.catalog.domain.Book;
 import com.example.AlmightyBook.order.application.port.ManageOrderUseCase;
 import com.example.AlmightyBook.order.db.OrderJpaRepository;
 import com.example.AlmightyBook.order.db.RecipientJpaRepository;
-import com.example.AlmightyBook.order.domain.*;
+import com.example.AlmightyBook.order.domain.Order;
+import com.example.AlmightyBook.order.domain.OrderItem;
+import com.example.AlmightyBook.order.domain.Recipient;
+import com.example.AlmightyBook.order.domain.UpdateStatusResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -73,20 +78,22 @@ public class ManageOrderService implements ManageOrderUseCase {
     }
 
     @Override
+    @Transactional
     public UpdateStatusResponse updateOrderStatus(UpdateStatusCommand command) {
         return repository.findById(command.getOrderId())
                 .map(order -> {
-                    if(!hasAccess(command, order)){
+                    if (!hasAccess(command, order)) {
                         return UpdateStatusResponse.failure("Unauthorised");
                     }
                     UpdateStatusResult result = order.updateStatus(command.getStatus());
-                    if(result.isRevoked()){
+                    if (result.isRevoked()) {
                         bookRepository.saveAll(revokeBooks(order.getItems()));
                     }
                     repository.save(order);
                     return UpdateStatusResponse.success(order.getStatus());
                 })
                 .orElse(UpdateStatusResponse.failure("Order not found"));
+
     }
 
     private boolean hasAccess(UpdateStatusCommand command, Order order) {

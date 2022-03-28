@@ -3,7 +3,6 @@ package com.example.AlmightyBook.order.application;
 import com.example.AlmightyBook.catalog.application.port.CatalogUseCase;
 import com.example.AlmightyBook.catalog.db.BookJpaRepository;
 import com.example.AlmightyBook.catalog.domain.Book;
-import com.example.AlmightyBook.order.application.port.ManageOrderUseCase;
 import com.example.AlmightyBook.order.application.port.QueryOrderUseCase;
 import com.example.AlmightyBook.order.db.OrderJpaRepository;
 import com.example.AlmightyBook.order.domain.Delivery;
@@ -20,7 +19,6 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 import static com.example.AlmightyBook.order.application.port.ManageOrderUseCase.*;
-import static com.example.AlmightyBook.order.application.port.ManageOrderUseCase.PlaceOrderCommand;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -296,9 +294,8 @@ class OrderServicesTest {
                 .builder()
                 .recipient(recipient())
                 .item(new OrderItemCommand(bookId, copies))
-                .delivery(Delivery.COURIER)
                 .build();
-        return  service.placeOrder(command).getRight();
+        return service.placeOrder(command).getRight();
 
     }
 
@@ -307,9 +304,8 @@ class OrderServicesTest {
                 .builder()
                 .recipient(recipient(recipient))
                 .item(new OrderItemCommand(bookId, copies))
-                .delivery(Delivery.COURIER)
                 .build();
-        return  service.placeOrder(command).getRight();
+        return service.placeOrder(command).getRight();
 
     }
 

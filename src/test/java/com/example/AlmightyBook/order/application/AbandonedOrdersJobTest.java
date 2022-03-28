@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 import java.math.BigDecimal;
 import java.time.Duration;
 
+import static com.example.AlmightyBook.order.application.port.ManageOrderUseCase.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(
@@ -69,10 +70,10 @@ class AbandonedOrdersJobTest {
     }
 
     private Long placedOrder(Long bookId, int copies){
-        ManageOrderUseCase.PlaceOrderCommand command = ManageOrderUseCase.PlaceOrderCommand
+        PlaceOrderCommand command = PlaceOrderCommand
                 .builder()
                 .recipient(recipient())
-                .item(new ManageOrderUseCase.OrderItemCommand(bookId, copies))
+                .item(new OrderItemCommand(bookId, copies))
                 .build();
         return  service.placeOrder(command).getRight();
 
