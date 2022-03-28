@@ -1,22 +1,19 @@
 package com.example.AlmightyBook.order.domain;
 
+import com.example.AlmightyBook.catalog.domain.Book;
 import com.example.AlmightyBook.jpa.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class OrderItem extends BaseEntity {
-    private Long bookId;
+    @ManyToOne
+    @JoinColumn(name = "book_d")
+    private Book book;
     private int quantity;
-
-    public OrderItem(Long bookId, int quantity) {
-        this.bookId = bookId;
-        this.quantity = quantity;
-    }
 }

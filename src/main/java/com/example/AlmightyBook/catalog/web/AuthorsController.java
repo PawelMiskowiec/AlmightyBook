@@ -12,7 +12,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.net.URI;
 import java.util.HashSet;
 import java.util.List;
@@ -43,10 +42,8 @@ public class AuthorsController {
     @Data
     private static class RestAuthorCommand{
         @NotBlank
-        private String firstName;
-        @NotBlank
-        private String lastName;
+        private String name;
         private Set<Book> books = new HashSet<>();
-        CreateAuthorCommand toCreateCommand(){ return new CreateAuthorCommand(firstName, lastName); }
+        CreateAuthorCommand toCreateCommand(){ return new CreateAuthorCommand(name); }
     }
 }

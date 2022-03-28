@@ -1,11 +1,11 @@
 package com.example.AlmightyBook.order.application;
 
 import com.example.AlmightyBook.catalog.db.BookJpaRepository;
-import com.example.AlmightyBook.catalog.domain.Book;
 import com.example.AlmightyBook.order.application.port.QueryOrderUseCase;
+import com.example.AlmightyBook.order.application.price.OrderPrice;
+import com.example.AlmightyBook.order.application.price.PriceService;
 import com.example.AlmightyBook.order.db.OrderJpaRepository;
 import com.example.AlmightyBook.order.domain.Order;
-import com.example.AlmightyBook.order.domain.OrderItem;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class QueryOrderService implements QueryOrderUseCase {
     private final OrderJpaRepository repository;
-    private final BookJpaRepository bookRepository;
+    private final PriceService priceService;
 
     @Override
     @Transactional
@@ -36,24 +36,15 @@ public class QueryOrderService implements QueryOrderUseCase {
     }
 
     private RichOrder toRichOrder(Order order) {
-        List<RichOrderItem> richItems = toRichItems(order.getItems());
+        OrderPrice orderPrice = priceService.calculatePrice(order);
         return new RichOrder(
                 order.getId(),
                 order.getStatus(),
-                richItems,
+                order.getItems(),
                 order.getRecipient(),
-                order.getCreatedAt()
+                order.getCreatedAt(),
+                orderPrice,
+                orderPrice.finalPrice()
         );
-    }
-
-    private List<RichOrderItem> toRichItems(List<OrderItem> items) {
-        return items.stream()
-                .map(item -> {
-                    Book book = bookRepository
-                            .findById(item.getBookId())
-                            .orElseThrow(() -> new IllegalStateException("Unable to find book with ID: " + item.getBookId()));
-                    return new RichOrderItem(book, item.getQuantity());
-                })
-                .collect(Collectors.toList());
     }
 }

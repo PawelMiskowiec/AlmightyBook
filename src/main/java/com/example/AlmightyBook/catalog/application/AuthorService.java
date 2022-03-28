@@ -28,6 +28,6 @@ public class AuthorService implements AuthorUseCase {
     }
 
     private Author toAuthor(CreateAuthorCommand command) {
-        return new Author(command.getFirstName(), command.getLastName());
+        return new Author(command.getName());
     }
 }

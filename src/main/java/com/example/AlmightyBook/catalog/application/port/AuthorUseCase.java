@@ -12,7 +12,6 @@ public interface AuthorUseCase {
 
     @Value
     class CreateAuthorCommand{
-        private String firstName;
-        private String lastName;
+        private String name;
     }
 }

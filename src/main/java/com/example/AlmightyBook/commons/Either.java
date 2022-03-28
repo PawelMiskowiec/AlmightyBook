@@ -1,10 +1,12 @@
 package com.example.AlmightyBook.commons;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.function.Function;
 
 @AllArgsConstructor
+@Getter
 public class Either<L, R> {
     private final boolean success;
     private final L left;

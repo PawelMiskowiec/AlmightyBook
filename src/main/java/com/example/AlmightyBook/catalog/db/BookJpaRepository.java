@@ -15,20 +15,18 @@ public interface BookJpaRepository extends JpaRepository<Book, Long> {
 
     List<Book> findByTitleStartsWithIgnoreCase(String title);
 
-    Optional<Book> findDistinctFirstByTitleStartsWithIgnoreCase(String title);
+    Optional<Book> findDistinctFirstByTitleContainingIgnoreCase(String title);
 
     @Query( " SELECT b FROM Book b JOIN b.authors a " +
             " WHERE " +
             " lower(b.title) LIKE lower(concat('%', :title, '%')) " +
-            " AND lower(a.firstName) LIKE lower(concat('%', :author, '%') ) " +
-            " OR lower(a.lastName) LIKE lower(concat('%', :author, '%'))"
+            " AND lower(a.name) LIKE lower(concat('%', :author, '%') ) "
     )
     List<Book> findByTitleAndAuthor(@Param("title") String title, @Param("author") String author);
 
     @Query(" SELECT b FROM Book b JOIN b.authors a " +
             " WHERE " +
-            " lower(a.firstName) LIKE lower(concat('%', :name, '%')) " +
-            " OR lower(a.lastName) LIKE lower(concat('%', :name, '%')) "
+            " lower(a.name) LIKE lower(concat('%', :name, '%')) "
     )
     List<Book> findByAuthor(@Param("name") String name);
 }

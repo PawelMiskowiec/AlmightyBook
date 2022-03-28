@@ -1,13 +1,17 @@
 package com.example.AlmightyBook.order.application.port;
 
 import com.example.AlmightyBook.commons.Either;
-import com.example.AlmightyBook.order.domain.*;
-import lombok.*;
+import com.example.AlmightyBook.order.domain.Delivery;
+import com.example.AlmightyBook.order.domain.OrderStatus;
+import com.example.AlmightyBook.order.domain.Recipient;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Singular;
+import lombok.Value;
 
-
+import javax.validation.constraints.NotNull;
 import java.util.List;
-
-import static java.util.Collections.emptyList;
+import java.util.concurrent.Delayed;
 
 
 public interface ManageOrderUseCase {
@@ -15,15 +19,29 @@ public interface ManageOrderUseCase {
 
     void deleteOrderById(Long id);
 
-    void updateOrderStatus(Long id, OrderStatus status);
+    UpdateStatusResponse updateOrderStatus(UpdateStatusCommand command);
 
     @Builder
     @Value
     @AllArgsConstructor
     class PlaceOrderCommand {
         @Singular
-        List<OrderItem> items;
+        List<OrderItemCommand> items;
         Recipient recipient;
+        Delivery delivery;
+    }
+
+    @Value
+    class OrderItemCommand {
+        Long bookId;
+        int quantity;
+    }
+
+    @Value
+    class UpdateStatusCommand{
+        Long orderId;
+        OrderStatus status;
+        String email;
     }
 
     class PlaceOrderResponse extends Either<String, Long> {
@@ -37,6 +55,20 @@ public interface ManageOrderUseCase {
 
         public static PlaceOrderResponse failure(String error) {
             return new PlaceOrderResponse(false, error, null);
+        }
+    }
+
+    class UpdateStatusResponse extends Either<String, OrderStatus> {
+        public UpdateStatusResponse(boolean success, String left, OrderStatus right) {
+            super(success, left, right);
+        }
+
+        public static UpdateStatusResponse success(OrderStatus status) {
+            return new UpdateStatusResponse(true, null, status);
+        }
+
+        public static UpdateStatusResponse failure(String error) {
+            return new UpdateStatusResponse(false, error, null);
         }
     }
 }
