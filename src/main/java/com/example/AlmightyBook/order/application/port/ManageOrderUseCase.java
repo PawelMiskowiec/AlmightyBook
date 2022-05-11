@@ -4,10 +4,10 @@ import com.example.AlmightyBook.commons.Either;
 import com.example.AlmightyBook.order.domain.Delivery;
 import com.example.AlmightyBook.order.domain.OrderStatus;
 import com.example.AlmightyBook.order.domain.Recipient;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Singular;
-import lombok.Value;
+import lombok.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -42,7 +42,7 @@ public interface ManageOrderUseCase {
     class UpdateStatusCommand{
         Long orderId;
         OrderStatus status;
-        String email;
+        UserDetails user;
     }
 
     class PlaceOrderResponse extends Either<String, Long> {
@@ -59,8 +59,8 @@ public interface ManageOrderUseCase {
         }
     }
 
-    class UpdateStatusResponse extends Either<String, OrderStatus> {
-        public UpdateStatusResponse(boolean success, String left, OrderStatus right) {
+    class UpdateStatusResponse extends Either<Error, OrderStatus> {
+        public UpdateStatusResponse(boolean success, Error left, OrderStatus right) {
             super(success, left, right);
         }
 
@@ -68,8 +68,17 @@ public interface ManageOrderUseCase {
             return new UpdateStatusResponse(true, null, status);
         }
 
-        public static UpdateStatusResponse failure(String error) {
+        public static UpdateStatusResponse failure(Error error) {
             return new UpdateStatusResponse(false, error, null);
         }
+    }
+
+    @AllArgsConstructor
+    @Getter
+    enum Error {
+        NOT_FOUND(HttpStatus.NOT_FOUND),
+        FORBIDDEN(HttpStatus.FORBIDDEN);
+
+        private final HttpStatus status;
     }
 }

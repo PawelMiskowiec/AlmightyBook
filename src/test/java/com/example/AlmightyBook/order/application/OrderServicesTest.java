@@ -13,9 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.test.annotation.DirtiesContext;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 import static com.example.AlmightyBook.order.application.port.ManageOrderUseCase.*;
@@ -23,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
-@Transactional
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD) //Transactional powodował problem UnsupportedOperationException
 class OrderServicesTest {
 
     @Autowired
@@ -74,7 +78,7 @@ class OrderServicesTest {
         // books number decreased
 
         // when
-        UpdateStatusCommand command = new UpdateStatusCommand(orderID, OrderStatus.CANCELED, recipient);
+        UpdateStatusCommand command = new UpdateStatusCommand(orderID, OrderStatus.CANCELED, user(recipient));
         service.updateOrderStatus(command);
 
         // then
@@ -92,11 +96,11 @@ class OrderServicesTest {
         Long orderId = placedOrder(effectiveJava.getId(), 10);
 
         //when
-        UpdateStatusCommand command = new UpdateStatusCommand(orderId, OrderStatus.PAID, "admin@example.org");
+        UpdateStatusCommand command = new UpdateStatusCommand(orderId, OrderStatus.PAID, adminUser());
         service.updateOrderStatus(command);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            UpdateStatusCommand canceledStatus = new UpdateStatusCommand(orderId, OrderStatus.CANCELED, "admin@example.org");
+            UpdateStatusCommand canceledStatus = new UpdateStatusCommand(orderId, OrderStatus.CANCELED, adminUser());
             service.updateOrderStatus(canceledStatus);
         });
 
@@ -113,13 +117,13 @@ class OrderServicesTest {
         Long orderId = placedOrder(effectiveJava.getId(), 10);
 
         //when
-        UpdateStatusCommand paidStatusCommand = new UpdateStatusCommand(orderId, OrderStatus.PAID, "admin@example.org");
-        UpdateStatusCommand shippedStatusCommand = new UpdateStatusCommand(orderId, OrderStatus.SHIPPED, "admin@example.org");
+        UpdateStatusCommand paidStatusCommand = new UpdateStatusCommand(orderId, OrderStatus.PAID,  adminUser());
+        UpdateStatusCommand shippedStatusCommand = new UpdateStatusCommand(orderId, OrderStatus.SHIPPED,  adminUser());
         service.updateOrderStatus(paidStatusCommand);
         service.updateOrderStatus(shippedStatusCommand);
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
-            UpdateStatusCommand canceledStatus = new UpdateStatusCommand(orderId, OrderStatus.CANCELED, "admin@example.org");
+            UpdateStatusCommand canceledStatus = new UpdateStatusCommand(orderId, OrderStatus.CANCELED,  adminUser());
             service.updateOrderStatus(canceledStatus);
         });
 
@@ -178,7 +182,7 @@ class OrderServicesTest {
         assertEquals(35l, getAvailableCopiesOf(effectiveJava));
 
         // when
-        UpdateStatusCommand command= new UpdateStatusCommand(orderID, OrderStatus.CANCELED, "marek@example.com");
+        UpdateStatusCommand command= new UpdateStatusCommand(orderID, OrderStatus.CANCELED, user("marek@example.com"));
         service.updateOrderStatus(command);
 
         // then
@@ -217,8 +221,7 @@ class OrderServicesTest {
         // books number decreased
 
         // when
-        String admin = "admin@example.org";
-        UpdateStatusCommand command = new UpdateStatusCommand(orderID, OrderStatus.PAID, admin);
+        UpdateStatusCommand command = new UpdateStatusCommand(orderID, OrderStatus.PAID, adminUser());
         service.updateOrderStatus(command);
 
         // then
@@ -307,6 +310,14 @@ class OrderServicesTest {
                 .build();
         return service.placeOrder(command).getRight();
 
+    }
+
+    private User user(String email){
+        return new User(email, "", List.of(new SimpleGrantedAuthority("ROLE_USER")));
+    }
+
+    private User adminUser(){
+        return new User("admin", "", List.of(new SimpleGrantedAuthority("ROLE_ADMIN")));
     }
 
     private Recipient recipient() {

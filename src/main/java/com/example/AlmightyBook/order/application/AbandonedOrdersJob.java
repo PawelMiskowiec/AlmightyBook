@@ -9,6 +9,7 @@ import com.example.AlmightyBook.order.domain.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -23,6 +24,7 @@ public class AbandonedOrdersJob {
     private final OrderJpaRepository repository;
     private final ManageOrderUseCase orderUseCase;
     private final OrdersProperties properties;
+    private final User systemUser;
     private final Clock clock;
 
     @Transactional
@@ -33,8 +35,7 @@ public class AbandonedOrdersJob {
         List<Order> orders = repository.findByStatusAndCreatedAtLessThanEqual(OrderStatus.NEW, timeStamp);
         log.info("Found orders to be abandoned: " + orders.size());
         orders.forEach(order -> {
-            String adminEmail = "admin@example.org";
-            UpdateStatusCommand command = new UpdateStatusCommand(order.getId(), OrderStatus.ABANDONED, adminEmail);
+            UpdateStatusCommand command = new UpdateStatusCommand(order.getId(), OrderStatus.ABANDONED, systemUser);
             orderUseCase.updateOrderStatus(command);
         });
     }

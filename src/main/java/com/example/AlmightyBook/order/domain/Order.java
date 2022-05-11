@@ -30,7 +30,7 @@ public class Order extends BaseEntity {
     @Singular
     private Set<OrderItem> items;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Recipient recipient;
 
     @Builder.Default

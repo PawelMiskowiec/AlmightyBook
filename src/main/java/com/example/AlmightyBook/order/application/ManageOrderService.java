@@ -9,6 +9,7 @@ import com.example.AlmightyBook.order.domain.Order;
 import com.example.AlmightyBook.order.domain.OrderItem;
 import com.example.AlmightyBook.order.domain.Recipient;
 import com.example.AlmightyBook.order.domain.UpdateStatusResult;
+import com.example.AlmightyBook.security.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ public class ManageOrderService implements ManageOrderUseCase {
     private final OrderJpaRepository repository;
     private final BookJpaRepository bookRepository;
     private final RecipientJpaRepository recipientRepository;
+    private final UserSecurity userSecurity;
 
     @Override
     public PlaceOrderResponse placeOrder(PlaceOrderCommand command) {
@@ -82,24 +84,18 @@ public class ManageOrderService implements ManageOrderUseCase {
     public UpdateStatusResponse updateOrderStatus(UpdateStatusCommand command) {
         return repository.findById(command.getOrderId())
                 .map(order -> {
-                    if (!hasAccess(command, order)) {
-                        return UpdateStatusResponse.failure("Unauthorised");
+                    if(userSecurity.isOwnerOrAdmin(order.getRecipient().getEmail(), command.getUser())){
+                        UpdateStatusResult result = order.updateStatus(command.getStatus());
+                        if (result.isRevoked()) {
+                            bookRepository.saveAll(revokeBooks(order.getItems()));
+                        }
+                        repository.save(order);
+                        return UpdateStatusResponse.success(order.getStatus());
                     }
-                    UpdateStatusResult result = order.updateStatus(command.getStatus());
-                    if (result.isRevoked()) {
-                        bookRepository.saveAll(revokeBooks(order.getItems()));
-                    }
-                    repository.save(order);
-                    return UpdateStatusResponse.success(order.getStatus());
+                    return UpdateStatusResponse.failure(Error.FORBIDDEN);
                 })
-                .orElse(UpdateStatusResponse.failure("Order not found"));
+                .orElse(UpdateStatusResponse.failure(Error.NOT_FOUND));
 
-    }
-
-    private boolean hasAccess(UpdateStatusCommand command, Order order) {
-        String email = command.getEmail();
-        return command.getEmail().equalsIgnoreCase(order.getRecipient().getEmail()) ||
-                email.equalsIgnoreCase("admin@example.org");
     }
 
     private Set<Book> revokeBooks(Set<OrderItem> items) {
