@@ -39,7 +39,10 @@ class CatalogService implements CatalogUseCase {
 
     @Override
     public Optional<Book> findOneByTitle(String title) {
-        return repository.findDistinctFirstByTitleContainingIgnoreCase(title);
+        return repository.findAll()
+                .stream()
+                .filter(book -> book.getTitle().toLowerCase().contains(title.toLowerCase()))
+                .findFirst();
     }
 
     @Override

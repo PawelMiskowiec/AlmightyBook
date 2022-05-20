@@ -15,8 +15,6 @@ public interface BookJpaRepository extends JpaRepository<Book, Long> {
 
     List<Book> findByTitleStartsWithIgnoreCase(String title);
 
-    Optional<Book> findDistinctFirstByTitleContainingIgnoreCase(String title);
-
     @Query( " SELECT b FROM Book b JOIN b.authors a " +
             " WHERE " +
             " lower(b.title) LIKE lower(concat('%', :title, '%')) " +

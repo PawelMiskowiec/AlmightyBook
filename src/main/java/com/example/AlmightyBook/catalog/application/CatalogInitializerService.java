@@ -54,9 +54,9 @@ public class CatalogInitializerService implements CatalogInitializerUseCase {
     }
 
     private void initData() {
-        ClassPathResource resource = new ClassPathResource("book.csv");
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader
-                ((new ClassPathResource("books.csv").getInputStream())))){
+        ClassPathResource resource = new ClassPathResource("books.csv");
+        try(BufferedReader reader = new BufferedReader(
+                new InputStreamReader((resource.getInputStream())))) {
 
             CsvToBean<CsvBook> build = new CsvToBeanBuilder<CsvBook>(reader)
                     .withType(CsvBook.class)
@@ -118,8 +118,13 @@ public class CatalogInitializerService implements CatalogInitializerUseCase {
     }
 
     private void placeOrder() {
-        Optional<Book> effectiveJava = catalog.findOneByTitle("effective");
-        Optional<Book> javaPuzzlers = catalog.findOneByTitle("puzzlers");
+        Book effectiveJava = catalog.findOneByTitle("clean")
+                .orElseThrow(() -> new IllegalStateException("Cannot find a book"));
+        Book cleanCode = catalog.findOneByTitle("effective")
+                .orElseThrow(() -> new IllegalStateException("Cannot find a book"));;
+
+        System.out.println(effectiveJava);
+        System.out.println(cleanCode);
 
         Recipient recipient = Recipient.builder()
                 .name("Dominik Politolog")
@@ -133,8 +138,8 @@ public class CatalogInitializerService implements CatalogInitializerUseCase {
         ManageOrderUseCase.PlaceOrderCommand command = ManageOrderUseCase.PlaceOrderCommand
                 .builder()
                 .recipient(recipient)
-                .item(new ManageOrderUseCase.OrderItemCommand(effectiveJava.get().getId(), 10))
-                .item(new ManageOrderUseCase.OrderItemCommand(javaPuzzlers.get().getId(), 20))
+                .item(new ManageOrderUseCase.OrderItemCommand(effectiveJava.getId(), 10))
+                .item(new ManageOrderUseCase.OrderItemCommand(cleanCode.getId(), 20))
                 .build();
 
         processOrder.placeOrder(command);
