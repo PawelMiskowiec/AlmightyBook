@@ -4,4 +4,4 @@
 Online bookstore application
 
 ### Author
-This application is based on course by sztukakodu.pl
+This application is mainly based on course by sztukakodu.pl

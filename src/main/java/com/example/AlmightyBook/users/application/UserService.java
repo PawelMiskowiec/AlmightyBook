@@ -1,7 +1,7 @@
 package com.example.AlmightyBook.users.application;
 
-import com.example.AlmightyBook.user.db.UserEntityRepository;
-import com.example.AlmightyBook.user.domain.UserEntity;
+import com.example.AlmightyBook.users.db.UserEntityRepository;
+import com.example.AlmightyBook.users.domain.UserEntity;
 import com.example.AlmightyBook.users.application.port.UserRegistrationUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

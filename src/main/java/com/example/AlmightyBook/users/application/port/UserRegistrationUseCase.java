@@ -1,8 +1,7 @@
 package com.example.AlmightyBook.users.application.port;
 
 import com.example.AlmightyBook.commons.Either;
-import com.example.AlmightyBook.user.domain.UserEntity;
-import org.springframework.security.core.userdetails.User;
+import com.example.AlmightyBook.users.domain.UserEntity;
 
 public interface UserRegistrationUseCase {
     RegisterResponse register(String username, String password);

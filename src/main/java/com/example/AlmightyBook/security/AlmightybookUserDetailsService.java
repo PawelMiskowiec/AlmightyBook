@@ -1,6 +1,6 @@
 package com.example.AlmightyBook.security;
 
-import com.example.AlmightyBook.user.db.UserEntityRepository;
+import com.example.AlmightyBook.users.db.UserEntityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
