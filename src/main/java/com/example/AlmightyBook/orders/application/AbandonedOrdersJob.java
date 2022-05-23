@@ -1,11 +1,11 @@
-package com.example.AlmightyBook.orders.application;
+package com.example.almightybook.orders.application;
 
-import com.example.AlmightyBook.clock.Clock;
-import com.example.AlmightyBook.orders.application.port.ManageOrderUseCase;
-import com.example.AlmightyBook.orders.application.port.ManageOrderUseCase.UpdateStatusCommand;
-import com.example.AlmightyBook.orders.db.OrderJpaRepository;
-import com.example.AlmightyBook.orders.domain.Order;
-import com.example.AlmightyBook.orders.domain.OrderStatus;
+import com.example.almightybook.clock.Clock;
+import com.example.almightybook.orders.application.port.ManageOrderUseCase;
+import com.example.almightybook.orders.application.port.ManageOrderUseCase.UpdateStatusCommand;
+import com.example.almightybook.orders.db.OrderJpaRepository;
+import com.example.almightybook.orders.domain.Order;
+import com.example.almightybook.orders.domain.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;

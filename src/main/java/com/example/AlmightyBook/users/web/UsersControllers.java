@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.users.web;
+package com.example.almightybook.users.web;
 
-import com.example.AlmightyBook.users.application.port.UserRegistrationUseCase;
+import com.example.almightybook.users.application.port.UserRegistrationUseCase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @RequestMapping("/users")

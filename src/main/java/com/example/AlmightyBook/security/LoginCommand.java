@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.security;
+package com.example.almightybook.security;
 
 import lombok.Data;
 

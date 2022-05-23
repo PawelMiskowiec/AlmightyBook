@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.orders.domain;
+package com.example.almightybook.orders.domain;
 
-import com.example.AlmightyBook.jpa.BaseEntity;
+import com.example.almightybook.jpa.BaseEntity;
 import lombok.*;
 
 import javax.persistence.Entity;

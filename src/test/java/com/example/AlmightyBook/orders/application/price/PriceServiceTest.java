@@ -1,9 +1,9 @@
-package com.example.AlmightyBook.orders.application.price;
+package com.example.almightybook.orders.application.price;
 
-import com.example.AlmightyBook.catalog.domain.Book;
-import com.example.AlmightyBook.orders.domain.Order;
-import com.example.AlmightyBook.orders.domain.OrderItem;
-import com.example.AlmightyBook.orders.domain.Recipient;
+import com.example.almightybook.catalog.domain.Book;
+import com.example.almightybook.orders.domain.Order;
+import com.example.almightybook.orders.domain.OrderItem;
+import com.example.almightybook.orders.domain.Recipient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

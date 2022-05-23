@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.catalog.web;
+package com.example.almightybook.catalog.web;
 
-import com.example.AlmightyBook.catalog.application.port.CatalogInitializerUseCase;
+import com.example.almightybook.catalog.application.port.CatalogInitializerUseCase;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.annotation.Secured;

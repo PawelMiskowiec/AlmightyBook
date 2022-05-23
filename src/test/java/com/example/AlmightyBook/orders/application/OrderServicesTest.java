@@ -1,12 +1,12 @@
-package com.example.AlmightyBook.orders.application;
+package com.example.almightybook.orders.application;
 
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase;
-import com.example.AlmightyBook.catalog.db.BookJpaRepository;
-import com.example.AlmightyBook.catalog.domain.Book;
-import com.example.AlmightyBook.orders.application.port.QueryOrderUseCase;
-import com.example.AlmightyBook.orders.db.OrderJpaRepository;
-import com.example.AlmightyBook.orders.domain.OrderStatus;
-import com.example.AlmightyBook.orders.domain.Recipient;
+import com.example.almightybook.catalog.application.port.CatalogUseCase;
+import com.example.almightybook.catalog.db.BookJpaRepository;
+import com.example.almightybook.catalog.domain.Book;
+import com.example.almightybook.orders.application.port.QueryOrderUseCase;
+import com.example.almightybook.orders.db.OrderJpaRepository;
+import com.example.almightybook.orders.domain.OrderStatus;
+import com.example.almightybook.orders.domain.Recipient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
-import static com.example.AlmightyBook.orders.application.port.ManageOrderUseCase.*;
+import static com.example.almightybook.orders.application.port.ManageOrderUseCase.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest

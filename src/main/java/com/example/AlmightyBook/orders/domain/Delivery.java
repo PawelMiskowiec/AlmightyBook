@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.orders.domain;
+package com.example.almightybook.orders.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package com.example.AlmightyBook;
+package com.example.almightybook;
 
-import com.example.AlmightyBook.orders.application.OrdersProperties;
+import com.example.almightybook.orders.application.OrdersProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

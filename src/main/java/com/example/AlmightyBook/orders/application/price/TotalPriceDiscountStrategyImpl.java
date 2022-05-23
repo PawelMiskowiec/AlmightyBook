@@ -1,7 +1,7 @@
-package com.example.AlmightyBook.orders.application.price;
+package com.example.almightybook.orders.application.price;
 
-import com.example.AlmightyBook.orders.domain.Order;
-import com.example.AlmightyBook.orders.domain.OrderItem;
+import com.example.almightybook.orders.domain.Order;
+import com.example.almightybook.orders.domain.OrderItem;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

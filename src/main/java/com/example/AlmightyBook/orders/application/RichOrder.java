@@ -1,9 +1,9 @@
-package com.example.AlmightyBook.orders.application;
+package com.example.almightybook.orders.application;
 
-import com.example.AlmightyBook.orders.application.price.OrderPrice;
-import com.example.AlmightyBook.orders.domain.OrderItem;
-import com.example.AlmightyBook.orders.domain.OrderStatus;
-import com.example.AlmightyBook.orders.domain.Recipient;
+import com.example.almightybook.orders.application.price.OrderPrice;
+import com.example.almightybook.orders.domain.OrderItem;
+import com.example.almightybook.orders.domain.OrderStatus;
+import com.example.almightybook.orders.domain.Recipient;
 import lombok.Value;
 
 import java.math.BigDecimal;

@@ -1,17 +1,13 @@
-package com.example.AlmightyBook.uploads.application;
+package com.example.almightybook.uploads.application;
 
-import com.example.AlmightyBook.uploads.application.port.UploadUseCase;
-import com.example.AlmightyBook.uploads.db.UploadJpaRepository;
-import com.example.AlmightyBook.uploads.domain.Upload;
+import com.example.almightybook.uploads.application.port.UploadUseCase;
+import com.example.almightybook.uploads.db.UploadJpaRepository;
+import com.example.almightybook.uploads.domain.Upload;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 @Service

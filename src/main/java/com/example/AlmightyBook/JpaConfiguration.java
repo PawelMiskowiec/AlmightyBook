@@ -1,4 +1,4 @@
-package com.example.AlmightyBook;
+package com.example.almightybook;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

@@ -1,12 +1,12 @@
-package com.example.AlmightyBook.orders.web;
+package com.example.almightybook.orders.web;
 
-import com.example.AlmightyBook.orders.application.RichOrder;
-import com.example.AlmightyBook.orders.application.port.ManageOrderUseCase;
-import com.example.AlmightyBook.orders.application.port.ManageOrderUseCase.PlaceOrderCommand;
-import com.example.AlmightyBook.orders.application.port.QueryOrderUseCase;
-import com.example.AlmightyBook.orders.domain.OrderStatus;
-import com.example.AlmightyBook.security.UserSecurity;
-import com.example.AlmightyBook.web.CreatedURI;
+import com.example.almightybook.orders.application.RichOrder;
+import com.example.almightybook.orders.application.port.ManageOrderUseCase;
+import com.example.almightybook.orders.application.port.ManageOrderUseCase.PlaceOrderCommand;
+import com.example.almightybook.orders.application.port.QueryOrderUseCase;
+import com.example.almightybook.orders.domain.OrderStatus;
+import com.example.almightybook.security.UserSecurity;
+import com.example.almightybook.web.CreatedURI;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -19,7 +19,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.AlmightyBook.orders.application.port.ManageOrderUseCase.*;
+import static com.example.almightybook.orders.application.port.ManageOrderUseCase.*;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController

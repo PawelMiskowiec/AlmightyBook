@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.orders.application;
+package com.example.almightybook.orders.application;
 
 import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;

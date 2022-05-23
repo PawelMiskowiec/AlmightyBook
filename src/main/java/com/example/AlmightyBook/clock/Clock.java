@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.clock;
+package com.example.almightybook.clock;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

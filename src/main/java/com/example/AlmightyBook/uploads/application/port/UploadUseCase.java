@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.uploads.application.port;
+package com.example.almightybook.uploads.application.port;
 
-import com.example.AlmightyBook.uploads.domain.Upload;
+import com.example.almightybook.uploads.domain.Upload;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 

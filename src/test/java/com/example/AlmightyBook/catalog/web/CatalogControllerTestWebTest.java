@@ -1,7 +1,7 @@
-package com.example.AlmightyBook.catalog.web;
+package com.example.almightybook.catalog.web;
 
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase;
-import com.example.AlmightyBook.catalog.domain.Book;
+import com.example.almightybook.catalog.application.port.CatalogUseCase;
+import com.example.almightybook.catalog.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

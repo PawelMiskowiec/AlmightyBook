@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.commons;
+package com.example.almightybook.commons;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

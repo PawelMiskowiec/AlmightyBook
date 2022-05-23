@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.web;
+package com.example.almightybook.web;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

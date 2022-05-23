@@ -1,16 +1,14 @@
-package com.example.AlmightyBook.catalog.domain;
+package com.example.almightybook.catalog.domain;
 
-import com.example.AlmightyBook.jpa.BaseEntity;
+import com.example.almightybook.jpa.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.hibernate.Hibernate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Getter

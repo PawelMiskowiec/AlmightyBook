@@ -1,7 +1,7 @@
-package com.example.AlmightyBook.uploads.web;
+package com.example.almightybook.uploads.web;
 
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase;
-import com.example.AlmightyBook.uploads.application.port.UploadUseCase;
+import com.example.almightybook.catalog.application.port.CatalogUseCase;
+import com.example.almightybook.uploads.application.port.UploadUseCase;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import org.springframework.core.io.ByteArrayResource;

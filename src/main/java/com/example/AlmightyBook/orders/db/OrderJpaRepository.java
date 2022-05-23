@@ -1,7 +1,7 @@
-package com.example.AlmightyBook.orders.db;
+package com.example.almightybook.orders.db;
 
-import com.example.AlmightyBook.orders.domain.Order;
-import com.example.AlmightyBook.orders.domain.OrderStatus;
+import com.example.almightybook.orders.domain.Order;
+import com.example.almightybook.orders.domain.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;

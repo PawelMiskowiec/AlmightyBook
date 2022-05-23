@@ -1,6 +1,5 @@
-package com.example.AlmightyBook.security;
+package com.example.almightybook.security;
 
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 

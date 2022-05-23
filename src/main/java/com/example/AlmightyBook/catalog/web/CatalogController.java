@@ -1,12 +1,12 @@
-package com.example.AlmightyBook.catalog.web;
+package com.example.almightybook.catalog.web;
 
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase;
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase.CreateBookCommand;
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase.UpdateBookCommand;
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase.UpdateBookCoverCommand;
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase.UpdateBookResponse;
-import com.example.AlmightyBook.catalog.domain.Book;
-import com.example.AlmightyBook.web.CreatedURI;
+import com.example.almightybook.catalog.application.port.CatalogUseCase;
+import com.example.almightybook.catalog.application.port.CatalogUseCase.CreateBookCommand;
+import com.example.almightybook.catalog.application.port.CatalogUseCase.UpdateBookCommand;
+import com.example.almightybook.catalog.application.port.CatalogUseCase.UpdateBookCoverCommand;
+import com.example.almightybook.catalog.application.port.CatalogUseCase.UpdateBookResponse;
+import com.example.almightybook.catalog.domain.Book;
+import com.example.almightybook.web.CreatedURI;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;

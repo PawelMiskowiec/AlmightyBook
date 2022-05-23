@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.catalog.db;
+package com.example.almightybook.catalog.db;
 
-import com.example.AlmightyBook.catalog.domain.Author;
+import com.example.almightybook.catalog.domain.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

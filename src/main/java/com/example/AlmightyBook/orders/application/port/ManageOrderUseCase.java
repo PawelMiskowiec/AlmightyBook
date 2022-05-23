@@ -1,9 +1,9 @@
-package com.example.AlmightyBook.orders.application.port;
+package com.example.almightybook.orders.application.port;
 
-import com.example.AlmightyBook.commons.Either;
-import com.example.AlmightyBook.orders.domain.Delivery;
-import com.example.AlmightyBook.orders.domain.OrderStatus;
-import com.example.AlmightyBook.orders.domain.Recipient;
+import com.example.almightybook.commons.Either;
+import com.example.almightybook.orders.domain.Delivery;
+import com.example.almightybook.orders.domain.OrderStatus;
+import com.example.almightybook.orders.domain.Recipient;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;

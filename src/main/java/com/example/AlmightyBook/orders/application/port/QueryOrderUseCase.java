@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.orders.application.port;
+package com.example.almightybook.orders.application.port;
 
-import com.example.AlmightyBook.orders.application.RichOrder;
+import com.example.almightybook.orders.application.RichOrder;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,6 @@
-package com.example.AlmightyBook.uploads.domain;
+package com.example.almightybook.uploads.domain;
 
-import com.example.AlmightyBook.jpa.BaseEntity;
-import lombok.Data;
+import com.example.almightybook.jpa.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,8 +9,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Getter

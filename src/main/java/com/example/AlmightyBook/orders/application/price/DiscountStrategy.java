@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.orders.application.price;
+package com.example.almightybook.orders.application.price;
 
-import com.example.AlmightyBook.orders.domain.Order;
+import com.example.almightybook.orders.domain.Order;
 
 import java.math.BigDecimal;
 

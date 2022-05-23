@@ -1,7 +1,7 @@
-package com.example.AlmightyBook.catalog.web;
+package com.example.almightybook.catalog.web;
 
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase;
-import com.example.AlmightyBook.catalog.domain.Book;
+import com.example.almightybook.catalog.application.port.CatalogUseCase;
+import com.example.almightybook.catalog.domain.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 
-import java.lang.reflect.ParameterizedType;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;

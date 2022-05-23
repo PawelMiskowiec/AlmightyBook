@@ -1,12 +1,11 @@
-package com.example.AlmightyBook.catalog.db;
+package com.example.almightybook.catalog.db;
 
-import com.example.AlmightyBook.catalog.domain.Book;
+import com.example.almightybook.catalog.domain.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BookJpaRepository extends JpaRepository<Book, Long> {
 

@@ -1,6 +1,5 @@
-package com.example.AlmightyBook.jpa;
+package com.example.almightybook.jpa;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Hibernate;

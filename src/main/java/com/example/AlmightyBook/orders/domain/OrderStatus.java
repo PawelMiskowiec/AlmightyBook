@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.orders.domain;
+package com.example.almightybook.orders.domain;
 
 import org.apache.commons.lang3.StringUtils;
 

@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.users.db;
+package com.example.almightybook.users.db;
 
-import com.example.AlmightyBook.users.domain.UserEntity;
+import com.example.almightybook.users.domain.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

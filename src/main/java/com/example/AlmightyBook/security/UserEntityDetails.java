@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.security;
+package com.example.almightybook.security;
 
-import com.example.AlmightyBook.users.domain.UserEntity;
+import com.example.almightybook.users.domain.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

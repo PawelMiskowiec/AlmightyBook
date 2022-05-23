@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.orders.db;
+package com.example.almightybook.orders.db;
 
-import com.example.AlmightyBook.orders.domain.Recipient;
+import com.example.almightybook.orders.domain.Recipient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

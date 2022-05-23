@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.catalog.domain;
+package com.example.almightybook.catalog.domain;
 
-import com.example.AlmightyBook.jpa.BaseEntity;
+import com.example.almightybook.jpa.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

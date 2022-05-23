@@ -1,4 +1,4 @@
-package com.example.AlmightyBook.orders.application.price;
+package com.example.almightybook.orders.application.price;
 
 import lombok.Value;
 

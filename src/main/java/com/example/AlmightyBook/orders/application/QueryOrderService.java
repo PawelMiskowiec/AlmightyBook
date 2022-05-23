@@ -1,10 +1,10 @@
-package com.example.AlmightyBook.orders.application;
+package com.example.almightybook.orders.application;
 
-import com.example.AlmightyBook.orders.application.port.QueryOrderUseCase;
-import com.example.AlmightyBook.orders.application.price.OrderPrice;
-import com.example.AlmightyBook.orders.application.price.PriceService;
-import com.example.AlmightyBook.orders.db.OrderJpaRepository;
-import com.example.AlmightyBook.orders.domain.Order;
+import com.example.almightybook.orders.application.port.QueryOrderUseCase;
+import com.example.almightybook.orders.application.price.OrderPrice;
+import com.example.almightybook.orders.application.price.PriceService;
+import com.example.almightybook.orders.db.OrderJpaRepository;
+import com.example.almightybook.orders.domain.Order;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

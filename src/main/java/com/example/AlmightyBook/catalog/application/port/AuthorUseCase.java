@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.catalog.application.port;
+package com.example.almightybook.catalog.application.port;
 
-import com.example.AlmightyBook.catalog.domain.Author;
+import com.example.almightybook.catalog.domain.Author;
 import lombok.Value;
 
 import java.util.List;

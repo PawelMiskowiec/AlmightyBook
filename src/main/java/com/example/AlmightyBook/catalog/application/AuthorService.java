@@ -1,8 +1,8 @@
-package com.example.AlmightyBook.catalog.application;
+package com.example.almightybook.catalog.application;
 
-import com.example.AlmightyBook.catalog.application.port.AuthorUseCase;
-import com.example.AlmightyBook.catalog.db.AuthorJpaRepository;
-import com.example.AlmightyBook.catalog.domain.Author;
+import com.example.almightybook.catalog.application.port.AuthorUseCase;
+import com.example.almightybook.catalog.db.AuthorJpaRepository;
+import com.example.almightybook.catalog.domain.Author;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

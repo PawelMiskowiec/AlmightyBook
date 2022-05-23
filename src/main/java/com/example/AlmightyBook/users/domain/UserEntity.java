@@ -1,6 +1,6 @@
-package com.example.AlmightyBook.users.domain;
+package com.example.almightybook.users.domain;
 
-import com.example.AlmightyBook.jpa.BaseEntity;
+import com.example.almightybook.jpa.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

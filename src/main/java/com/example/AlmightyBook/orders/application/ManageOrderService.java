@@ -1,15 +1,15 @@
-package com.example.AlmightyBook.orders.application;
+package com.example.almightybook.orders.application;
 
-import com.example.AlmightyBook.catalog.db.BookJpaRepository;
-import com.example.AlmightyBook.catalog.domain.Book;
-import com.example.AlmightyBook.orders.application.port.ManageOrderUseCase;
-import com.example.AlmightyBook.orders.db.OrderJpaRepository;
-import com.example.AlmightyBook.orders.db.RecipientJpaRepository;
-import com.example.AlmightyBook.orders.domain.Order;
-import com.example.AlmightyBook.orders.domain.OrderItem;
-import com.example.AlmightyBook.orders.domain.Recipient;
-import com.example.AlmightyBook.orders.domain.UpdateStatusResult;
-import com.example.AlmightyBook.security.UserSecurity;
+import com.example.almightybook.catalog.db.BookJpaRepository;
+import com.example.almightybook.catalog.domain.Book;
+import com.example.almightybook.orders.application.port.ManageOrderUseCase;
+import com.example.almightybook.orders.db.OrderJpaRepository;
+import com.example.almightybook.orders.db.RecipientJpaRepository;
+import com.example.almightybook.orders.domain.Order;
+import com.example.almightybook.orders.domain.OrderItem;
+import com.example.almightybook.orders.domain.Recipient;
+import com.example.almightybook.orders.domain.UpdateStatusResult;
+import com.example.almightybook.security.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

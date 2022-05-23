@@ -1,17 +1,17 @@
-package com.example.AlmightyBook.catalog.application;
+package com.example.almightybook.catalog.application;
 
 
-import com.example.AlmightyBook.catalog.application.port.CatalogInitializerUseCase;
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase;
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase.CreateBookCommand;
-import com.example.AlmightyBook.catalog.application.port.CatalogUseCase.UpdateBookCoverCommand;
-import com.example.AlmightyBook.catalog.db.AuthorJpaRepository;
-import com.example.AlmightyBook.catalog.domain.Author;
-import com.example.AlmightyBook.catalog.domain.Book;
-import com.example.AlmightyBook.jpa.BaseEntity;
-import com.example.AlmightyBook.orders.application.port.ManageOrderUseCase;
-import com.example.AlmightyBook.orders.application.port.QueryOrderUseCase;
-import com.example.AlmightyBook.orders.domain.Recipient;
+import com.example.almightybook.catalog.application.port.CatalogInitializerUseCase;
+import com.example.almightybook.catalog.application.port.CatalogUseCase;
+import com.example.almightybook.catalog.application.port.CatalogUseCase.CreateBookCommand;
+import com.example.almightybook.catalog.application.port.CatalogUseCase.UpdateBookCoverCommand;
+import com.example.almightybook.catalog.db.AuthorJpaRepository;
+import com.example.almightybook.catalog.domain.Author;
+import com.example.almightybook.catalog.domain.Book;
+import com.example.almightybook.jpa.BaseEntity;
+import com.example.almightybook.orders.application.port.ManageOrderUseCase;
+import com.example.almightybook.orders.application.port.QueryOrderUseCase;
+import com.example.almightybook.orders.domain.Recipient;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
