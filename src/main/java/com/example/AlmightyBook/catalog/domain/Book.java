@@ -35,7 +35,7 @@ public class Book extends BaseEntity {
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable
     @JsonIgnoreProperties("books")
     @ToString.Exclude

@@ -18,13 +18,15 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @AllArgsConstructor
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @EnableConfigurationProperties(AdminConfig.class)
 @Profile("!test")
-public class AlmightybookSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class AlmightybookSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     private final UserEntityRepository userEntityRepository;
     private final AdminConfig adminConfig;
@@ -33,6 +35,7 @@ public class AlmightybookSecurityConfiguration extends WebSecurityConfigurerAdap
     User systemUser(){
         return adminConfig.adminUser();
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

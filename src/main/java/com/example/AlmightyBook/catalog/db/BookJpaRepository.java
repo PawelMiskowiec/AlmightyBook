@@ -9,9 +9,6 @@ import java.util.List;
 
 public interface BookJpaRepository extends JpaRepository<Book, Long> {
 
-    @Query("SELECT DISTINCT b FROM Book b JOIN FETCH b.authors")
-    List<Book> findAllEager();
-
     List<Book> findByTitleStartsWithIgnoreCase(String title);
 
     @Query( " SELECT b FROM Book b JOIN b.authors a " +

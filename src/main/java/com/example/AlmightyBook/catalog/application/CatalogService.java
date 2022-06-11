@@ -26,7 +26,6 @@ class CatalogService implements CatalogUseCase {
     private final AuthorJpaRepository authorRepository;
     private final UploadUseCase upload;
 
-
     @Override
     public List<Book> findByTitle(String title) {
         return repository.findByTitleStartsWithIgnoreCase(title);
@@ -52,7 +51,7 @@ class CatalogService implements CatalogUseCase {
 
     @Override
     public List<Book> findAll() {
-        return repository.findAllEager();
+        return repository.findAll();
     }
 
     @Override

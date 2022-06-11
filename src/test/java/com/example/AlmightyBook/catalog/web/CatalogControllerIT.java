@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.test.annotation.DirtiesContext;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
@@ -20,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
-@Transactional
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class CatalogControllerIT {
 
     @Autowired
@@ -53,7 +55,7 @@ class CatalogControllerIT {
         ));
 
         //when
-        List<Book> all = controller.getAll(Optional.empty(), Optional.empty());
+        List<RestBook> all = controller.getAll(mockRequest(), Optional.empty(), Optional.empty());
 
         //then
         assertEquals(2, all.size());
@@ -65,7 +67,7 @@ class CatalogControllerIT {
         givenEffectiveJava();
         givenJavaConcurrencyInPractice();
         //when
-        List<Book> all = controller.getAll(Optional.empty(), Optional.of("Bloch"));
+        List<RestBook> all = controller.getAll(mockRequest(), Optional.empty(), Optional.of("Bloch"));
 
         //then
         assertEquals(1, all.size());
@@ -78,11 +80,15 @@ class CatalogControllerIT {
         givenEffectiveJava();
         givenJavaConcurrencyInPractice();
         //when
-        List<Book> all = controller.getAll(Optional.of("Effective"), Optional.empty());
+        List<RestBook> all = controller.getAll(mockRequest(), Optional.of("Effective"), Optional.empty());
 
         //then
         assertEquals(1, all.size());
         assertEquals("Effective Java", all.get(0).getTitle());
+    }
+
+    private MockHttpServletRequest mockRequest() {
+        return new MockHttpServletRequest();
     }
 
     private void givenJavaConcurrencyInPractice() {
