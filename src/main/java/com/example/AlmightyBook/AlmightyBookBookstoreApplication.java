@@ -1,6 +1,7 @@
 package com.example.almightybook;
 
 import com.example.almightybook.orders.application.OrdersProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -22,17 +23,6 @@ public class AlmightyBookBookstoreApplication {
 	@Bean
 	RestTemplate restTemplate(){
 		return new RestTemplateBuilder().build();
-	}
-
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
-						.allowedMethods("*")
-						.allowedOrigins("*");			}
-		};
 	}
 
 }
